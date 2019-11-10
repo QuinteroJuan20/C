@@ -2,17 +2,17 @@
 
 void pedirArreglo(int a[], int n_max)
 {
-    while (n_max>0)
+    while (n_max>=0)
     {
         printf("inserte un valor: ");
-        scanf("%d", &a[n_max-1]);
+        scanf("%d", &a[n_max]);
         n_max--;
     }
 }
 
 void imprimeArreglo(int a[], int n_max)\
 {
-    printf("[%d, ", a[--n_max]);
+    printf("[%d, ", a[n_max]);
     while (--n_max>0)
     {
         printf("%d, ", a[n_max]);;
@@ -22,9 +22,10 @@ void imprimeArreglo(int a[], int n_max)\
 
 int existe_positivo(int a[], int n_max)
 {
-    while (--n_max>=0)
+    while (n_max>=0)
     {
         if(a[n_max]>0) return 1;
+        n_max--;
     }
     return 0;
 }
@@ -32,13 +33,13 @@ int existe_positivo(int a[], int n_max)
 int todos_positivos(int a[], int n_max)
 {
     int x=1;
-    while (--n_max>=0)
+    while (n_max>=0)
     {
         x = (a[n_max]>0) && x;
+        n_max--;
     }
     return x;
 }
-
 
 int main(void)
 {
@@ -46,7 +47,7 @@ int main(void)
     printf("tamanio: ");
     scanf("%d", &tam);
     int a[tam];
-    pedirArreglo(a, tam);
+    pedirArreglo(a, --tam);
     imprimeArreglo(a, tam);
     printf("existe_positivo - 1\ntodos_positivos - 2\n");
     printf("opcion: ");
